@@ -1,0 +1,102 @@
+/*! Color themes for Google Code Prettify | MIT License | github.com/jmblog/color-themes-for-google-code-prettify */
+.prettyprint {
+  border: 0 !important;
+}
+
+.pln {
+  color: #F1F5FE;
+}
+
+/* Specify class=linenums on a pre to get line numbering */
+ol.linenums {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: #655f6d;
+}
+
+@media screen {
+
+  /* string content */
+
+  .str {
+    color: #4AC8C4;
+  }
+
+  /* keyword */
+
+  .kwd {
+    color: #955ae7;
+  }
+
+  /* comment */
+
+  .com {
+    color: #655f6d;
+  }
+
+  /* type name */
+
+  .typ {
+    color: #576ddb;
+  }
+
+  /* literal value */
+
+  .lit {
+    color: #aa573c;
+  }
+
+  /* punctuation */
+
+  .pun {
+    color: #F1F5FE;
+  }
+
+  /* lisp open bracket */
+
+  .opn {
+    color: #F1F5FE;
+  }
+
+  /* lisp close bracket */
+
+  .clo {
+    color: #F1F5FE;
+  }
+
+  /* markup tag name */
+
+  .tag {
+    color: #FF787A;
+  }
+
+  /* markup attribute name */
+
+  .atn {
+    color: #aa573c;
+  }
+
+  /* markup attribute value */
+
+  .atv {
+    color: #398bc6;
+  }
+
+  /* declaration */
+
+  .dec {
+    color: #aa573c;
+  }
+
+  /* variable name */
+
+  .var {
+    color: #FF787A;
+  }
+
+  /* function name */
+
+  .fun {
+    color: #576ddb;
+  }
+}
