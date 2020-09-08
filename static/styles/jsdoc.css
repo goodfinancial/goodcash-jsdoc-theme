@@ -1,27 +1,58 @@
-@font-face {
-  font-family: "Euclid Circular A";
-  src: url("../fonts/EuclidCircularA-Bold-WebS.woff2") format("woff2"),
-       url("../fonts/EuclidCircularA-Bold-WebS.woff") format("woff");
-  font-style: normal;
-  font-weight: 700;
-}
-
-@font-face {
-  font-family: "Euclid Circular A";
-  src: url("../fonts/EuclidCircularA-Medium-WebS.woff2") format("woff2"),
-       url("../fonts/EuclidCircularA-Medium-WebS.woff") format("woff");
-  font-style: normal;
-  font-weight: normal;
-}
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 :root {
-  --color-white: #fff;
+  --color-white: #FFFFFF;
   --color-white--off: #F1F5FE;
   --color-gray: #BDBDBD;
   --color-blue: #3459F6;
+  --color-blue--mid: #04226F;
   --color-blue--dark: #001751;
+  --color-black: #000F30;
   --color-coral: #FF787A;
   --color-mint: #4AC8C4;
+  --font-content: 'Poppins', sans-serif;
+  --font-heading: 'Fira Code', monospace;
+  --background-color: var(--color-white);
+  --text-color: var(--color-blue--dark);
+  --text-color--heading: var(--color-black);
+  --text-color--subheading: var(--color-blue);
+  --text-color--caption: var(--color-blue--dark);
+  --text-color--link: var(--color-blue);
+  --container-padding: var(--container-padding-v) var(--container-padding-h);
+  --container-padding-v: 0;
+  --container-padding-h: 20px;
+  --nav-width: 250px;
+  --nav-background: transparent;
+  --nav-heading-color--h2: var(--color-blue);
+  --nav-heading-color--h3: var(--color-black);
+  --nav-link-color--l1: var(--color-blue);
+  --nav-link-color--l2: var(--color-gray);
+  --nav-link-color--hover: var(--color-blue--dark);
+  --nav-button-color: var(--color-blue);
+  --code-background-color: var(--color-white--off);
+  --code-text-color: var(--color-blue--dark);
+  --table-param: var(--color-blue);
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    --background-color: var(--color-black);
+    --text-color: var(--color-white);
+    --text-color--heading: var(--color-white);
+    --text-color--subheading: var(--color-white--off);
+    --text-color--caption: var(--color-white--off);
+    --text-color--link: var(--color-mint);
+    --nav-background: var(--color-blue--mid);
+    --nav-heading-color--h2: var(--color-white);
+    --nav-heading-color--h3: var(--color-white);
+    --nav-link-color--l1: var(--color-mint);
+    --nav-link-color--hover: var(--color-white--off);
+    --nav-button-color: var(--color-white);
+    --code-background-color: var(--color-blue);
+    --code-text-color: var(--color-white);
+    --table-param: var(--color-mint);
+  }
 }
 
 * {
@@ -34,11 +65,10 @@ html, body {
 }
 
 body {
-  color: var(--color-blue--dark);
-  background-color: var(--color-white);
+  color: var(--text-color);
+  background-color: var(--background-color);
   margin: 0 auto;
-  padding: 0 20px;
-  font-family: 'Euclid Circular A', 'Helvetica Neue', Helvetica, sans-serif;
+  font-family: var(--font-content);
   font-size: 16px;
 }
 
@@ -48,7 +78,7 @@ img {
 
 a,
 a:active {
-  color: var(--color-blue);
+  color: var(--text-color--link);
   text-decoration: none;
 }
 
@@ -65,7 +95,7 @@ article a:hover, article a:active {
 }
 
 article .description a {
-    word-break: break-word;
+  word-break: break-word;
 }
 
 p, ul, ol, blockquote {
@@ -74,11 +104,11 @@ p, ul, ol, blockquote {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Euclid Circular A', sans-serif;
+  font-family: var(--font-content);
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: #000;
+  color: var(--text-color--heading);
   font-weight: 700;
   margin: 0;
 }
@@ -101,7 +131,7 @@ h2 {
 }
 
 h3 {
-  color: var(--color-blue);
+  color: var(--text-color--subheading);
   font-size: 22px;
   margin: 1.2em 0 .3em;
   font-weight: 400;
@@ -110,11 +140,11 @@ h3 {
 h4 {
   font-size: 18px;
   margin: 1em 0 .2em;
-  color: #4d4e53;
+  color: var(--text-color--caption);
 }
 
 h4.name {
-  color: var(--color-blue--dark);
+  color: var(--text-color--heading);
   font-size: 22px;
   margin: 1.5em 0 0.5em;
   padding: .75em 0;
@@ -129,7 +159,7 @@ h4.name a:hover {
 }
 
 h5, .container-overview .subsection-title {
-  color: var(--color-blue--dark);
+  /*color: var(--color-blue--dark);*/
   font-weight: 400;
   font-size: 20px;
   letter-spacing: -0.01em;
@@ -142,8 +172,9 @@ h6 {
 }
 
 tt, code, kbd, samp {
-  font-family: Consolas, Monaco, 'Andale Mono', monospace;
-  background: #f4f4f4;
+  font-family: var(--font-heading);
+  color: var(--code-text-color);
+  background: var(--code-background-color);
   padding: 1px 5px;
 }
 
@@ -161,7 +192,8 @@ tt, code, kbd, samp {
 #main {
   float: right;
   min-width: 360px;
-  width: calc(100% - 240px);
+  width: calc(100% - var(--nav-width));
+  padding: var(--container-padding);
 }
 
 header {
@@ -170,7 +202,7 @@ header {
 
 section {
   display: block;
-  background-color: #fff;
+  background-color: var(--background-color);
   padding: 0 0 0 30px;
 }
 
@@ -186,28 +218,29 @@ section {
 }
 
 nav {
+  background: var(--nav-background);
+  padding: var(--container-padding);
   font-size: 14px;
   line-height: 1.5;
   float: left;
   display: block;
-  width: 250px;
-  background: var(--color-white);
+  width: var(--nav-width);
   overflow: auto;
   position: fixed;
   height: 100%;
 }
 
 nav #nav-search{
-    width: 210px;
-    height: 30px;
-    padding: 5px 10px;
-    border-radius: 3px;
-    margin-right: 20px;
-    margin-top: 20px;
+  width: 210px;
+  height: 30px;
+  padding: 5px 10px;
+  border-radius: 3px;
+  margin-right: 20px;
+  margin-top: 20px;
 }
 
 nav.wrap a{
-    word-wrap: break-word;
+  word-wrap: break-word;
 }
 
 nav h3 {
@@ -216,7 +249,7 @@ nav h3 {
   line-height: 24px;
   margin: 15px 0 10px;
   padding: 0;
-  color: #000;
+  color: var(--nav-heading-color--h3);
 }
 
 nav ul {
@@ -234,17 +267,17 @@ nav ul a:active {
 
 nav a:hover,
 nav a:active {
-  color: var(--color-blue--dark);
+  color: var(--nav-link-color--hover);
 }
 
 nav > ul > li > a {
-  color: var(--color-blue);
+  color: var(--nav-link-color--l1);
   margin-top: 10px;
 }
 
 nav ul ul a {
-  color: var(--color-gray);
-  border-left: 1px solid var(--color-gray);
+  color: var(--nav-link-color--l2);
+  border-left: 1px solid var(--nav-link-color--l2);
 }
 
 nav ul ul a,
@@ -259,7 +292,8 @@ nav h2 {
 
 nav > h2 > a {
    margin: 10px 0 -10px;
-   color: var(--color-blue) !important;
+   color: var(--nav-heading-color--h2);
+   /*color: var(--color-blue) !important;*/
 }
 
 footer {
@@ -299,11 +333,11 @@ footer {
 }
 
 .name, .signature {
-  font-family: Consolas, Monaco, 'Andale Mono', monospace
+  font-family: var(--font-heading)
 }
 
 .signature {
-    color: var(--color-blue);
+  color: var(--color-blue);
 }
 
 .details {
@@ -314,31 +348,31 @@ footer {
 }
 
 .details dt {
-   width: auto;
-   float: left;
-   padding-left: 10px;
+  width: auto;
+  float: left;
+  padding-left: 10px;
 }
 
 .details dd {
-   margin-left: 70px;
-   margin-top: 6px;
-   margin-bottom: 6px;
+  margin-left: 70px;
+  margin-top: 6px;
+  margin-bottom: 6px;
 }
 
 .details ul {
-   margin: 0
+  margin: 0
 }
 
 .details ul {
-   list-style-type: none
+  list-style-type: none
 }
 
 .details pre.prettyprint {
-   margin: 0
+  margin: 0
 }
 
 .details .object-value {
-   padding-top: 0
+  padding-top: 0
 }
 
 .description {
@@ -439,7 +473,7 @@ td, th {
 }
 
 thead tr, thead tr {
-  font-family: 'Euclid Circular A', sans-serif;
+  font-family: var(--font-content);
   color: var(--color-white);
   background-color: var(--color-blue);
   font-weight: 700;
@@ -454,12 +488,12 @@ thead tr, thead tr {
 }
 
 .params td, .params .name, .props .name, .name code {
-  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+  font-family: var(--font-heading);
   font-size: 100%;
 }
 
 .params td.description p {
-  font-family: 'Euclid Circular A', sans-serif;
+  font-family: var(--font-content);
 }
 
 .params td.description > p:first-child, .props td.description > p:first-child {
@@ -473,8 +507,8 @@ thead tr, thead tr {
 }
 
 span.param-type, .params td .param-type, .param-type dd {
-  color: var(--color-blue);
-  font-family: Consolas, Monaco, 'Andale Mono', monospace
+  color: var(--table-param);
+  font-family: var(--font-heading)
 }
 
 .param-type dt, .param-type dd {
@@ -491,101 +525,22 @@ span.param-type, .params td .param-type, .param-type dd {
 
 /* navicon button */
 .navicon-button {
+  color: var(--nav-button-color);
+  font-weight: 700;
   display: none;
   position: relative;
-  padding: 2.0625rem 1.5rem;
-  transition: 0.25s;
+  padding: 0.5rem;
+  border: 2px solid var(--nav-button-color);
+  transition: opacity 0.2s ease-out;
   cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  opacity: .8;
-}
-.navicon-button .navicon:before, .navicon-button .navicon:after {
-  transition: 0.25s;
-}
-.navicon-button:hover {
-  transition: 0.5s;
-  opacity: 1;
-}
-.navicon-button:hover .navicon:before, .navicon-button:hover .navicon:after {
-  transition: 0.25s;
-}
-.navicon-button:hover .navicon:before {
-  top: .825rem;
-}
-.navicon-button:hover .navicon:after {
-  top: -.825rem;
 }
 
-/* navicon */
-.navicon {
-  position: relative;
-  width: 2.5em;
-  height: .3125rem;
-  background: #000;
-  transition: 0.3s;
-  border-radius: 2.5rem;
-}
-.navicon:before, .navicon:after {
-  display: block;
-  content: "";
-  height: .3125rem;
-  width: 2.5rem;
-  background: #000;
-  position: absolute;
-  z-index: -1;
-  transition: 0.3s 0.25s;
-  border-radius: 1rem;
-}
-.navicon:before {
-  top: .625rem;
-}
-.navicon:after {
-  top: -.625rem;
-}
-
-/* open */
-.nav-trigger:checked + label:not(.steps) .navicon:before,
-.nav-trigger:checked + label:not(.steps) .navicon:after {
-  top: 0 !important;
-}
-
-.nav-trigger:checked + label .navicon:before,
-.nav-trigger:checked + label .navicon:after {
-  transition: 0.5s;
-}
-
-/* Minus */
-.nav-trigger:checked + label {
-  -webkit-transform: scale(0.75);
-          transform: scale(0.75);
-}
-
-/* × and + */
-.nav-trigger:checked + label.plus .navicon,
-.nav-trigger:checked + label.x .navicon {
-  background: transparent;
-}
-
-.nav-trigger:checked + label.plus .navicon:before,
-.nav-trigger:checked + label.x .navicon:before {
-  -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
-  background: #FFF;
-}
-
-.nav-trigger:checked + label.plus .navicon:after,
-.nav-trigger:checked + label.x .navicon:after {
-  -webkit-transform: rotate(45deg);
-          transform: rotate(45deg);
-  background: #FFF;
-}
-
-.nav-trigger:checked + label.plus {
-  -webkit-transform: scale(0.75) rotate(45deg);
-          transform: scale(0.75) rotate(45deg);
+.nav-trigger:checked + .navicon-button {
+  opacity: 0.6;
 }
 
 .nav-trigger:checked ~ nav {
@@ -617,12 +572,11 @@ span.param-type, .params td .param-type, .param-type dd {
 
 /* nav level */
 .level-hide {
-    display: none;
+  display: none;
 }
 html[data-search-mode] .level-hide {
-    display: block;
+  display: block;
 }
-
 
 @media only screen and (min-width: 320px) and (max-width: 680px) {
   body {
@@ -630,7 +584,7 @@ html[data-search-mode] .level-hide {
   }
 
   nav {
-    background: #FFF;
+    background-color: var(--background-color);
     width: 250px;
     height: 100%;
     position: fixed;
@@ -646,8 +600,8 @@ html[data-search-mode] .level-hide {
   .navicon-button {
     display: inline-block;
     position: fixed;
-    top: 1.5em;
-    right: 0;
+    top: 1rem;
+    right: 0.75rem;
     z-index: 2;
   }
 
