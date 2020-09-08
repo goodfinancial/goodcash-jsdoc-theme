@@ -8,7 +8,7 @@ See https://user-auth-doc.goodcash.co for a sample demo.
 ## Install
 
 ```bash
-$ npm install --save-dev bitbucket:goodfinancial/goodcash-jsdoc-theme
+$ npm install --save-dev github:goodfinancial/goodcash-jsdoc-theme
 ```
 
 ## Usage
